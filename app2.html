@@ -1,0 +1,23 @@
+<!---->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app-2">
+    <span v-bind:title="vbind_title">鼠标悬浮在这上面</span>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var app2 = new Vue({
+        el: "#app-2",
+        data: {
+            vbind_title: "行吧，看看时间：" + new Date().toLocaleString()
+        }
+    })
+</script>
+
+</body>
+</html>
