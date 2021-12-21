@@ -14,23 +14,21 @@
             margin-top: 60px;
         }
     </style>
-    <script src="js/vue.js"></script>
+    <script src="../js/vue.js"></script>
 </head>
 
 <body>
 <div id="app">
-    <input type="text" v-bind:value="input_value" v-bind:style="input_style">
-    <input type="text" :value="input_value" :style="input_style">
-    <a :href="a_href">?</a>
+    <div v-html="msg" v-show="isShow"></div>
+    <div v-text="msg"></div>
 </div>
 <script>
     var app = new Vue({
         el: "#app",
         data: {
-            input_value: "Hello Vue!",
-            input_style: "padding: 1rem;border:1px solid #2c3e50;margin: 1rem",
-            a_href:"https://router.asus.com"
-        },
+            msg: "<input type='text' value='你好' style='padding: .5rem;margin: 1rem;border:1px solid #2c3e50;'/>",
+            isShow: true
+        }
     })
 </script>
 </body>

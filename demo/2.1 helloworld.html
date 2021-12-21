@@ -14,7 +14,7 @@
             margin-top: 60px;
         }
     </style>
-    <script src="js/vue.js"></script>
+    <script src="../js/vue.js"></script>
 
 </head>
 
@@ -39,24 +39,7 @@
             professional: "计算机／互联网／通信",
             region: "中国 福建 漳州",
             hometown: "中国 福建 漳州"
-        },
-        methods: {
-            /* 方法 */
-            fun: function () {
-                alert('昵称：' + this.name);
-            },
-            fun2: function () {
-            }
-        },
-        mounted: function () {
-            /* 钩子函数 */
-            /* 代表Vue对象的生命周期的某一部分 */
-            /*
-            * 此时，已经将编译好的模板，挂载到了页面指定的容器中显示。
-            * 触发时机：挂载到实例之后调用
-            * */
-            this.fun();
-        },
+        }
     })
 </script>
 

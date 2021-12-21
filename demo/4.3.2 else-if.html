@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <div v-if="num>100"><img :src="img_status1" :style="img_style">
+        <p>库存充足</p></div>
+    <div v-else-if="num>10"><img :src="img_status2" :style="img_style">
+        <p>有库存</p></div>
+    <div v-else><img :src="img_status3" :style="img_style">
+        <p>库存不足!</p>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 111,
+            img_status1: 'https://iconfont.alicdn.com/s/647e53ab-f57a-4df0-b4cf-663a082e171c_origin.svg',
+            img_status2: 'https://iconfont.alicdn.com/s/64f7c666-23c3-4dc7-bc2e-6e9cf2855bf4_origin.svg',
+            img_status3: 'https://iconfont.alicdn.com/s/3a9d5780-968a-41b3-80b5-39413e8366a2_origin.svg',
+            img_style: "width:25%;margin:1rem"
+        }
+    })
+</script>
+</body>
+
+</html>
