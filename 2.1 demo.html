@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		#app {
+			font-family: "Avenir", Helvetica, Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-align: center;
+			color: #2c3e50;
+			margin-top: 60px;
+		}
+	</style>
+	<script src="js/vue.js"></script>
+	
+</head>
+
+<body>
+<div id="app">
+	<img src="/assets/images/personal.JPG" alt="" width="20%" style="border-radius: 50%">
+	<h1>个人资料</h1>
+	<p>QQ：{{qq}}</p>
+	<p>昵称：{{name}}</p>
+	<p>Q龄：{{qq_age}}</p>
+	<p>职业：{{professional}}</p>
+	<p>地区：{{region}}</p>
+	<p>故乡：{{hometown}}</p>
+</div>
+<script>
+	var app=new Vue({
+		el:"#app",
+		data:{
+			qq:"2764482499",
+			name:"木",
+			qq_age:"6年",
+			professional:"计算机／互联网／通信",
+			region:"中国 福建 漳州",
+			hometown:"中国 福建 漳州"
+		}
+	})
+</script>
+
+</body>
+
+</html>

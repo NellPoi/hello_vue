@@ -18,8 +18,19 @@
 </head>
 
 <body>
-
-
+<div id="app">
+    <div v-html="msg" v-show="isShow"></div>
+    <div v-text="msg"></div>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: "<input type='text' value='你好' style='padding: 1rem;margin: 1rem;border:1px solid #2c3e50;'/>",
+            isShow: true
+        }
+    })
+</script>
 </body>
 
 </html>

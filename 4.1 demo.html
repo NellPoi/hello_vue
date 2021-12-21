@@ -18,8 +18,21 @@
 </head>
 
 <body>
-
-
+<div id="app">
+    <input type="text" v-bind:value="input_value" v-bind:style="input_style">
+    <input type="text" :value="input_value" :style="input_style">
+    <a :href="a_href">?</a>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            input_value: "Hello Vue!",
+            input_style: "padding: 1rem;border:1px solid #2c3e50;margin: 1rem",
+            a_href:"https://router.asus.com"
+        },
+    })
+</script>
 </body>
 
 </html>
