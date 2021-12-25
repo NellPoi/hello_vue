@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <component_local_frontend></component_local_frontend>
+</div>
+<script>
+    var component_local_backend = {
+        data: function () {
+            return {
+                msg: '局部'
+            }
+        },
+        template: "<div>这是一个<span style='color:red'>{{msg}}</span>变量</div>"
+    }
+    var app = new Vue({
+        el: "#app",
+        components: {
+            /* 组件名：组件内容 */
+            component_local_frontend: component_local_backend
+        }
+    })
+</script>
+</body>
+
+</html>

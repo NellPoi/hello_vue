@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+
+        input {
+            padding: .5rem;
+            border: 1px solid #2c3e50;
+            margin: 1rem;
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 1rem auto;
+        }
+
+        td {
+            color: #2c3e50;
+            border: 1px solid #2c3e50;
+            text-align: center;
+            padding: .5rem .5rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .control-panel {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <h1>商品操作页面</h1>
+    <div class="control-panel">
+        <div class="control-panel-form">
+            <label for="goods_id">商品ID：</label>
+            <input type="text" value="goods_id" id="goods_id" v-model="goods_id">
+        </div>
+        <div class="control-panel-form">
+            <label for="goods_name">名称：</label>
+            <input type="text" value="名称" id="goods_name" v-model="goods_name">
+        </div>
+        <div class="control-panel-form">
+            <label for="goods_price">价格：</label>
+            <input type="text" value="50" id="goods_price" v-model="goods_price">
+        </div>
+    </div>
+    <input type="button" value="添加" v-on:click="add">
+
+    <hr style="margin: 2rem">
+    <label for="goods_search">搜索：</label>
+    <input type="text" id="goods_search" v-model="searchKey">
+    <table>
+        <tr>
+            <td>序号</td>
+            <td>名称</td>
+            <td>价格</td>
+            <td>操作</td>
+        </tr>
+        <tr v-for="item in search(searchKey)">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <!--<td><a href="javascript:void(0)" @click="removeThis">删除</a></td>-->
+            <!-- prevent阻止事件的默认行为，这里是阻止超链接默认的跳转功能 -->
+            <td><a href="" @click.prevent="removeThis(item.id)">删除</a></td>
+        </tr>
+    </table>
+
+</div>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            goods_id: null,
+            goods_name: null,
+            goods_price: null,
+            searchKey: '',
+            items: [
+                {
+                    id: 1,
+                    'name': 'MacBook Pro 14 英寸 (2021 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 2,
+                    'name': 'MacBook Pro 16 英寸 (2021 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 3,
+                    'name': 'MacBook Air (M1，2020 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 4,
+                    'name': 'MacBook Air (视网膜显示屏，2020 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 5,
+                    'name': 'MacBook Air (2017 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 6,
+                    'name': 'MacBook Pro 13 英寸 (M1，2020 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 7,
+                    'name': 'MacBook Pro 13 英寸 (两个雷雳 3 端口，2020 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 8,
+                    'name': 'MacBook Pro 13 英寸 (两个雷雳 3 端口，2016 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 9,
+                    'name': 'MacBook Pro 13 英寸 (四个雷雳 3 端口，2020 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+                {
+                    id: 10,
+                    'name': 'MacBook Pro 16 英寸 (2019 年)',
+                    'price': Math.ceil(Math.random() * 20000),
+                },
+            ]
+        }, methods: {
+            // search: function (searchKey) {
+            /* 可以简写成这种形式 */
+            search(searchKey) {
+                /* 筛选包含关键字的数据*/
+                return this.items.filter(item => {
+                    if (item.name.includes(searchKey))
+                        return item
+                })
+            },
+            add() {
+                /* 获得用户填入的表单信息封装成对象*/
+                var tmp_goods = {
+                    id: this.goods_id,
+                    name: this.goods_name,
+                    price: this.goods_price
+                };
+                /* 如果用户没有填写表单，那就随机调用库里的数据（方便调试） */
+                if (this.goods_id == null && this.goods_name == null && this.goods_price == null) {
+                    tmp_goods.id = this.goods_id = this.items.length + 1
+                    tmp_goods.name = this.goods_name = this.items[Math.ceil(Math.random() * this.items.length) - 1]['name'];
+                    tmp_goods.price = this.goods_price = Math.ceil(Math.random() * 20000);
+                }
+                console.info(this.items.length)
+                /* 添加到数组当中 */
+                this.items.push(tmp_goods)
+                /* 清空表单数据（当用户添加之后） */
+                this.goods_id = this.goods_name = this.goods_price = null
+            },
+            removeThis: function (id) {
+                /* 根据ID查询到当前商品的下标 */
+                let index = this.items.findIndex(item => {
+                    if (item.id === id) {
+                        return true
+                    }
+                });
+                /* 删除该商品 */
+                if (this.items.length === 1) {
+                    alert('至少需要保留一个物品！')
+                } else {
+                    this.items.splice(index, 1)
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+
+</html>

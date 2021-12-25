@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <Test_8_1_component_welcome></Test_8_1_component_welcome>
+    <Test_8_1_component_welcome></Test_8_1_component_welcome>
+    <Test_8_1_component_welcome></Test_8_1_component_welcome>
+    <Test_8_1_component_welcome></Test_8_1_component_welcome>
+</div>
+<script>
+    Vue.component("test_8_1_component_welcome", {
+        data: function () {
+            return {
+                userName: "小卢"
+            }
+        },
+        template: "<p>👏欢迎回来，{{userName}}</p>"
+    })
+    var app = new Vue({
+        el: "#app"
+    })
+</script>
+
+</body>
+
+</html>

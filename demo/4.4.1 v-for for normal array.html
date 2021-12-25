@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <ul>
+        <!-- 表示遍历arr这个数组，遍历里面的每一项都存放在item里面 -->
+        <li v-for="item in single_dimensional_array">{{item}}</li>
+    </ul>
+    <ul>
+        <!-- item代表遍历arr时的当前值，index表示遍历数组时当前的下标 -->
+        <!-- .text 表示数组的值（因为是二维数组需要指定） -->
+        <li v-for="(item,index) in double_dimensional_array">{{index}} 📗 {{item.text}}</li>
+    </ul>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            single_dimensional_array: [1, 2, 3, 4, 5],
+            double_dimensional_array: [{text: 'a'}, {text: 'b'}, {text: 'c'}, {text: 'd'}, {text: 'e'},]
+        }
+    })
+</script>
+</body>
+
+</html>

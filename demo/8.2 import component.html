@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+    <script src="../js/http_vue_loader.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <welcome></welcome>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        components: {
+            "welcome": httpVueLoader("8.2 import component.vue")
+        }
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <show v-for="item in items" v-html="item"></show>
+</div>
+<script>
+    Vue.component('show', {
+        props: 'value',
+        template: '<li style="color: green">{{value}}</li>'
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            items: ['这不是轻轻松松吗', '这不是轻轻松松吗', '这不是轻轻松松吗']
+        }
+    })
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+
+        input {
+            padding: .5rem;
+            border: 1px solid #2c3e50;
+            margin: 1rem;
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <input type="text" v-model="msg">
+    <div>{{msg}}</div>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: "hello Vue!"
+        }
+    })
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px
+        }
+
+        input {
+            padding: .5rem;
+            border: 1px solid #2c3e50;
+            margin: 1rem;
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <p>输入分数，按回车，显示等级</p>
+    <input type="number" v-on:change="queryLevel" v-model="score">
+    <p>{{level}}</p>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            level: '',
+            score: ''
+        },
+        methods: {
+            queryLevel() {
+                if (this.score > 90 && this.score <= 100) {
+                    this.level = '优秀'
+                } else if (this.score > 80 && this.score <= 90) {
+                    this.level = '良好'
+                } else if (this.score > 70 && this.score <= 80) {
+                    this.level = '一般'
+                } else if (this.score > 60 && this.score <= 70) {
+                    this.level = '较差'
+                } else {
+                    this.level = '不及格'
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+
+</html>

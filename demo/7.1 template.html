@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <template v-for="item in arr">
+        <a href="#" style="padding: .5rem">{{item}}</a>
+    </template>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            arr: [1, 2, 3, 4, 5]
+        }
+    })
+</script>
+</body>
+
+</html>

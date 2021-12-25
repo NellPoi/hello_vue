@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <parent></parent>
+</div>
+<script>
+    Vue.component("parent", {
+        template: "<div style='border:1px solid green'>这是父组件<child></child></div>",
+        components: {
+            child: {
+                template: "<div style='border:1px solid lightseagreen'>这是子组件</div>"
+            }
+        }
+    })
+    var app=new Vue({
+        el:"#app",
+    })
+</script>
+</body>
+
+</html>

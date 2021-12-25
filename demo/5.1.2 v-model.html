@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+
+        select {
+            padding: .5rem;
+            border: 1px solid #2c3e50;
+            margin: 1rem;
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        input[type='checkbox'] {
+            margin: 1rem;
+        }
+
+        li {
+            list-style-type: none;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <select v-model="selected">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="广州">广州</option>
+        <option value="深圳">深圳</option>
+    </select>
+    <div>{{selected}}</div>
+    <hr style="margin: 2rem">
+    <input type="checkbox"
+           id="input_checkbox1"
+           value="iPhone 13 Pro Max"
+           v-model="checkedValues">
+    <label for="input_checkbox1">iPhone 13 Pro Max</label>
+    <input type="checkbox"
+           id="input_checkbox2"
+           value="iPhone 12 mini"
+           v-model="checkedValues">
+    <label for="input_checkbox2">iPhone 12 mini</label>
+    <input type="checkbox"
+           id="input_checkbox3"
+           value="iPhone 11"
+           v-model="checkedValues">
+    <label for="input_checkbox3">iPhone 11</label>
+    <ul>
+        <li v-for="item in checkedValues">{{item}}</li>
+    </ul>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            selected: '你还没选择哦～',
+            checkedValues: []
+        }
+    })
+</script>
+
+</body>
+
+</html>
