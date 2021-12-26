@@ -23,17 +23,16 @@
 </div>
 <script>
     Vue.component('show', {
-        props: 'value',
+        props: ['value'],
         template: '<li style="color: green">{{value}}</li>'
     })
     var app = new Vue({
-        el: '#app',
+        el: "#app",
         data: {
             items: ['这不是轻轻松松吗', '这不是轻轻松松吗', '这不是轻轻松松吗']
         }
     })
 </script>
-
 </body>
 
 </html>
