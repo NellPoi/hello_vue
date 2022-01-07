@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <input type="button" value="获取用户信息" @click="getUserById('test01')">
+    <div>
+        <p>Status:{{status}}</p>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            status: null,
+        },
+        methods: {
+            getUserById: function (name) {
+                axios({
+                    method: 'post',
+                    url: "http://192.168.1.100:10001/prod-api/api/login",
+                    data: {
+                        username: name,
+                        password: 123456
+                    }
+                }).then(resp => {
+                    switch (resp.data.code) {
+                        case 200:
+                            this.status = "登陆成功"
+                            break
+                        case 500:
+                            this.status = "账号或密码错误"
+                            break
+                    }
+                })
+            }
+        }
+    })
+</script>
+
+</body>
+
+</html>

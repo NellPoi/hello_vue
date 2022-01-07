@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+¬
+        input {
+            padding: .5rem;
+            border: 1px solid #2c3e50;
+            margin: 1rem;
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <input type="button" value="获取" @click="getUser">
+    <div>
+        <p>id:{{user.id}}</p>
+        <p>name:{{user.name}}</p>
+        <p>qq:{{user.qq}}</p>
+        <p>wechat:{{user.wechat}}</p>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            user: {
+                id: "",
+                name: "",
+                qq: "",
+                wechat: ""
+            }
+        },
+        methods: {
+            /* 写法1 */
+            // getUser: function () {
+            //     var this_Vue = this
+            //     axios.get("../assets/json/user.json").then(function (resp) {
+            //         this_Vue.user = resp.data
+            //     })
+            // },
+
+            /* 写法2 */
+            getUser() {
+                axios.get('../assets/json/user.json').then(resp => (this.user = resp.data))
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

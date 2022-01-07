@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+
+        input {
+            padding: .5rem;
+            border: 1px solid #2c3e50;
+            margin: 1rem;
+            font-family: "Avenir", Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <input type="text" value="" v-model="temperature">
+    <div v-show="show_detail">
+        <p>温度：{{temperature}}°C</p>
+        <p>穿衣建议：{{advise}}</p>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            temperature: '',
+            advise: '',
+            show_detail: false
+        },
+        watch: {
+            temperature: function (newVal, oldVal) {
+                this.show_detail = true
+                if (newVal > 25 && newVal <= 40) {
+                    this.advise = '建议穿短袖🩳'
+                } else if (newVal > 10 && newVal <= 25) {
+                    this.advise = '建议穿长袖、夹克🥼'
+                } else if (newVal <= 9 && newVal >= -30) {
+                    this.advise = '建议穿外套，棉服🥶'
+                } else {
+                    this.show_detail = false
+                    this.temperature = '你乱输温度！'
+                }
+            }
+        }
+    })
+</script>
+</body>
+
+</html>
